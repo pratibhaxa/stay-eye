@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import "./App.css";
+import SignUpPage from "./components/ui/SignUpPage";
+import SignInPage from "./components/ui/SignInPage";
+import { Dashboard } from './components/ui/Dashboard';
+import { Properties } from './components/ui/Properties';
+import { message } from 'antd';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [messageApi, contextHolder] = message.useMessage();
+
+    const success = (message) => {
+        messageApi.open({
+            type: 'success',
+            content: message,
+            duration: 5,
+        });
+    };
+    
+    return (
+        <>
+            {contextHolder}
+            <Routes>
+                <Route path='/' element={<SignUpPage success={success} />} />
+                <Route path='/auth/signup' element={<SignUpPage success={success} />} />
+                <Route path='/auth/signin' element={<SignInPage success={success} />} />
+                <Route path='/dashboard' element={<Dashboard success={success} />} />
+                <Route path='/properties' element={<Properties success={success} />} />
+            </Routes>
+        </>
+    );
 }
 
 export default App;
