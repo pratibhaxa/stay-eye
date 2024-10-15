@@ -9,7 +9,13 @@ import { facilities } from "../../data/facilities";
 export const Properties = () => {
     const [current, setCurrent] = useState(localStorage.getItem("currentNavbarItem") || "dashboard");
     const [displayAddListingModal, setDisplayAddListingModal] = useState(false);
-    const [newListing, setNewListing] = useState({});
+    const [newListing, setNewListing] = useState({
+        address: "",
+        email: "",
+        facilities: "",
+        propertyName: "",
+        rooms: "",
+    });
 
     const options = facilities.map((option) => ({
         label: option,
@@ -17,10 +23,6 @@ export const Properties = () => {
       }));
 
     localStorage.setItem("currentNavbarItem", current);
-    
-    const handleAddListingModal = (e) => {
-        setDisplayAddListingModal(true);
-    }
 
     return (
         <>
@@ -32,7 +34,6 @@ export const Properties = () => {
                 <AddListingModal
                     displayAddListingModal={displayAddListingModal}
                     setDisplayAddListingModal={setDisplayAddListingModal}
-                    handleAddListingModal={handleAddListingModal}
                     newListing={newListing}
                     setNewListing={setNewListing}
                     options={options}

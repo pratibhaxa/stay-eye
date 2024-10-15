@@ -1,54 +1,14 @@
 import { Button, Form, Input, Modal, Tag, Tooltip } from "antd";
 import { useState } from "react";
 
-const optionStrings = [
-    "Swimming Pool",
-    "Gym",
-    "Private Beach Access",
-    "Wi-Fi",
-    "Fireplace",
-    "Hot Tub",
-    "Ski Access",
-    "Rooftop Terrace",
-    "Parking",
-    "Boat Dock",
-    "Firepit",
-    "Private Garden",
-    "Outdoor Kitchen",
-    "Home Theater",
-    "Concierge",
-    "Spa",
-    "Hiking Trails",
-    "Private Dock",
-    "Smart Home Integration",
-    "Wine Cellar",
-    "BBQ Area",
-    "Playground",
-    "Tennis Court",
-    "Infinity Pool",
-    "Ski-In/Ski-Out",
-];
-const options = optionStrings.map((option) => ({
-    label: option,
-    value: option,
-}));
-
 export const AddListingModal = ({
     displayAddListingModal,
     setDisplayAddListingModal,
-    handleAddListingModal,
     newListing,
     setNewListing,
     options
 }) => {
     const [form] = Form.useForm();
-    const [newListing, setNewListing] = useState({
-        address: "",
-        email: "",
-        facilities: "",
-        propertyName: "",
-        rooms: "",
-    });
 
     const handleSubmit = async () => {
         console.log("add listing");
